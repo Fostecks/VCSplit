@@ -15,6 +15,7 @@ const {
     BOT_CLIENT_ID,
     DISCORD_GUILD,
     SPLITTER_MESSAGE_ID,
+    CHANNEL_ID,
     LEFT_VC,
     RIGHT_VC,
     COMBINED_VC
@@ -55,10 +56,10 @@ bot.on('ready', async () => {
     
     console.log("bot ready");
     guild = await bot.guilds.fetch(DISCORD_GUILD);
-    const ruleChannel = await guild.channels.fetch('1019381437876678676');
+    const ruleChannel = await guild.channels.fetch(CHANNEL_ID);
 
     if(ruleChannel) {
-        const ruleMessage = await ruleChannel.messages.fetch('1019381682979221524');
+        const ruleMessage = await ruleChannel.messages.fetch(SPLITTER_MESSAGE_ID);
         if(ruleMessage) {
             leftUsers = await ruleMessage.reactions.resolve('⬅️').users.fetch()
             rightUsers = await ruleMessage.reactions.resolve('➡️').users.fetch()
